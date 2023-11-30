@@ -2,7 +2,6 @@
 import SecondaryButton from '@/components/SecondaryButton.vue'
 import SectionTitle from '@/components/SectionTitle.vue'
 import Ingredient from '@/types/Ingedient'
-import UnitOfMeasurement from '@/types/enums/UnitOfMeasurement'
 import { computed } from 'vue'
 import IngredientForm from './IngredientForm.vue'
 
@@ -30,7 +29,7 @@ const add = () => {
     id: new Date().getTime().toString(),
     name: '',
     quantity: 0,
-    unit: UnitOfMeasurement.Pc,
+    unit: '',
   })
 }
 

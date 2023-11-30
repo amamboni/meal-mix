@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FF6633',
-          light: '#FFECE4',
-          dark: '#C5420A',
+          DEFAULT: '#D35933',
+          light: '#F7EEEC',
+          dark: '#B54324',
         },
         zinc: '#F6F7F9',
         slate: '#E6EAF1',

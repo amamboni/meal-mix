@@ -17,7 +17,7 @@ const count = ref(1)
 
 const generate = () => {
   const items = tags.value.length
-    ? meals.value.filter((meal) => meal.tags?.some((tag) => tags.value.includes(tag)))
+    ? meals.value.filter((meal) => tags.value?.every((tag) => meal.tags?.includes(tag)))
     : meals.value
   mealStore.generated = sampleSize(items, count.value)
 }

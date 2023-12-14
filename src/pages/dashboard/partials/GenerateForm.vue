@@ -25,7 +25,7 @@ const generate = () => {
           <TextInput :id="id" type="number" v-model="count" autofocus></TextInput>
         </template>
       </FormInput>
-      <PrimaryButton>Generate!</PrimaryButton>
+      <PrimaryButton type="submit">Generate!</PrimaryButton>
     </form>
   </div>
 </template>

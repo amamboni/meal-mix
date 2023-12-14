@@ -1,5 +1,5 @@
 import Meal from '@/types/Meal'
-import { flatMapDeep, uniq } from 'lodash'
+import { filter, flatMapDeep, uniq } from 'lodash'
 import { defineStore } from 'pinia'
 import { persist } from './persist'
 
@@ -15,7 +15,7 @@ export const useMealStore = defineStore('meals', {
       generated: [],
     } as State),
   getters: {
-    tags: (state) => uniq(flatMapDeep(state.meals, 'tags')),
+    tags: (state) => filter(uniq(flatMapDeep(state.meals, 'tags'))),
   },
 
   persist,

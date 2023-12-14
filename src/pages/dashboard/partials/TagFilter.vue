@@ -26,8 +26,9 @@ const tagsList = computed({
 </script>
 
 <template>
-  <label v-for="tag in tags" :key="tag" class="flex items-center gap-2">
+  <label v-if="tags.length" v-for="tag in tags" :key="tag" class="flex items-center gap-2">
     <input type="checkbox" v-model="tagsList" class="text-primary !ring-primary" :value="tag" />
     {{ tag }}
   </label>
+  <p v-else>No tags available.</p>
 </template>

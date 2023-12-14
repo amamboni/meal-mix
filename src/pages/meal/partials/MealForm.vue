@@ -8,6 +8,7 @@ import Meal from '@/types/Meal'
 import { cloneDeep } from 'lodash'
 import { computed, reactive } from 'vue'
 import Ingredients from './Ingredients.vue'
+import Tags from './Tags.vue'
 
 interface Props {
   id?: string
@@ -23,6 +24,7 @@ const form = reactive<Meal>({
   id: props?.id ? meal.value?.id || '' : new Date().getTime().toString(),
   name: props?.id ? meal.value?.name || '' : '',
   ingredients: props?.id ? meal.value?.ingredients || [] : [],
+  tags: props?.id ? meal.value?.tags || [] : [],
 })
 
 const submit = () => {
@@ -42,7 +44,7 @@ const submit = () => {
 </script>
 
 <template>
-  <form @submit.prevent="submit" class="flex flex-col">
+  <form @submit.prevent="submit" class="flex flex-col gap-2">
     <FormInput id="name">
       <template #label>Meal Name</template>
       <template #default="{ id }">
@@ -52,6 +54,10 @@ const submit = () => {
 
     <div class="flex-1 overflow-auto p-2">
       <Ingredients v-model="form.ingredients" />
+    </div>
+
+    <div class="flex-1 overflow-auto p-2">
+      <Tags v-model="form.tags" />
     </div>
 
     <PrimaryButton type="submit" class="w-full mt-auto">

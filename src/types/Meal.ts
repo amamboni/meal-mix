@@ -4,4 +4,5 @@ export default interface Meal {
   id: string
   name: string
   ingredients: Ingredient[]
+  tags: string[]
 }

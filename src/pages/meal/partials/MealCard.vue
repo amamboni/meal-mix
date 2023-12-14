@@ -27,6 +27,12 @@ defineEmits<{
       </p>
     </template>
 
+    <div class="flex flex-wrap gap-2">
+      <template v-for="tag in meal?.tags" :key="tag">
+        <span class="bg-slate rounded-xl p-2 text-sm">{{ tag }} </span>
+      </template>
+    </div>
+
     <SecondaryButton @click="$emit('remove')">
       <IconDelete />
     </SecondaryButton>

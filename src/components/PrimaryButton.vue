@@ -4,7 +4,7 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  type: 'submit',
+  type: 'button',
 })
 </script>
 

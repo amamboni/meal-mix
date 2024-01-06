@@ -28,6 +28,7 @@ export default defineConfig({
           },
         ],
       },
+      registerType: 'autoUpdate',
     }),
   ],
   resolve: {

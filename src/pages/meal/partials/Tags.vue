@@ -47,7 +47,7 @@ const remove = (index: number) => {
         <template #title> Tags: </template>
       </SectionTitle>
       <div class="flex gap-2">
-        <TextInput v-model="tag" class="grow" />
+        <TextInput v-model="tag" class="w-full" />
         <PrimaryButton @click.prevent="add">Add</PrimaryButton>
       </div>
     </div>

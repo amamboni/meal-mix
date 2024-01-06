@@ -48,7 +48,13 @@ const submit = () => {
     <FormInput id="name">
       <template #label>Meal Name</template>
       <template #default="{ id }">
-        <TextInput :id="id" type="text" v-model="form.name" placeholder="Chicken" />
+        <TextInput
+          :id="id"
+          type="text"
+          v-model="form.name"
+          placeholder="Chicken, Beef, ..."
+          autofocus
+        />
       </template>
     </FormInput>
 

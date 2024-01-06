@@ -1,15 +1,23 @@
 <script setup lang="ts">
 import LinkButton from '@/components/LinkButton.vue'
 import SectionTitle from '@/components/SectionTitle.vue'
+import TextInput from '@/components/TextInput.vue'
 import IconLogo from '@/icons/IconLogo.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useMealStore } from '@/store/meal'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import MealCard from './partials/MealCard.vue'
 
 const mealStore = useMealStore()
 
+const search = ref('')
 const meals = computed(() => mealStore.meals)
+
+const mealsFiltered = computed(() =>
+  meals.value.filter((meal) =>
+    meal?.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())
+  )
+)
 
 const remove = (index: number) => {
   mealStore.meals.splice(index, 1)
@@ -26,16 +34,22 @@ const remove = (index: number) => {
       <LinkButton :to="{ name: 'create-meal' }" class="whitespace-nowrap">Create Meal</LinkButton>
     </div>
 
-    <div class="flex-1 overflow-auto space-y-2">
-      <template v-if="meals.length">
-        <MealCard
-          v-for="(meal, index) in meals"
-          :key="index"
-          :meal="meal"
-          @remove="remove(index)"
-        />
-      </template>
+    <TextInput type="search" v-model="search" placeholder="Search" />
 
+    <div class="flex-1 overflow-auto">
+      <div v-if="meals.length">
+        <div v-if="mealsFiltered.length" class="grid grid-cols-2 gap-2">
+          <MealCard
+            v-for="(meal, index) in mealsFiltered"
+            :key="index"
+            :meal="meal"
+            @remove="remove(index)"
+          />
+        </div>
+        <div v-else>
+          <p>No results.</p>
+        </div>
+      </div>
       <IconLogo class="w-full h-full" v-else />
     </div>
   </MainLayout>

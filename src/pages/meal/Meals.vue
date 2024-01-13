@@ -5,6 +5,7 @@ import TextInput from '@/components/TextInput.vue'
 import IconLogo from '@/icons/IconLogo.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useMealStore } from '@/store/meal'
+import Meal from '@/types/Meal'
 import { computed, ref } from 'vue'
 import MealCard from './partials/MealCard.vue'
 
@@ -19,7 +20,8 @@ const mealsFiltered = computed(() =>
   )
 )
 
-const remove = (index: number) => {
+const remove = (meal: Meal) => {
+  const index = mealStore.meals.findIndex((item) => item?.id === meal?.id)
   mealStore.meals.splice(index, 1)
 }
 </script>
@@ -40,10 +42,10 @@ const remove = (index: number) => {
       <div v-if="meals.length">
         <div v-if="mealsFiltered.length" class="grid grid-cols-2 gap-2">
           <MealCard
-            v-for="(meal, index) in mealsFiltered"
-            :key="index"
+            v-for="meal in mealsFiltered"
+            :key="meal?.id"
             :meal="meal"
-            @remove="remove(index)"
+            @remove="remove(meal)"
           />
         </div>
         <div v-else>

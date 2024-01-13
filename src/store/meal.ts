@@ -6,6 +6,7 @@ import { persist } from './persist'
 interface State {
   meals: Meal[]
   generated: Meal[]
+  list: Meal[]
 }
 
 export const useMealStore = defineStore('meals', {
@@ -13,6 +14,7 @@ export const useMealStore = defineStore('meals', {
     ({
       meals: [],
       generated: [],
+      list: [],
     } as State),
   getters: {
     tags: (state) => filter(uniq(flatMapDeep(state.meals, 'tags'))),

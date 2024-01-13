@@ -21,6 +21,11 @@ const routes = [
     name: 'edit-meal',
     component: () => import('./pages/meal/EditMeal.vue'),
   },
+  {
+    path: '/list',
+    name: 'list',
+    component: () => import('./pages/list/List.vue'),
+  },
 ]
 
 const router = createRouter({

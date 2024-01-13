@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import IconDashboard from '@/icons/IconDashboard.vue'
 import IconList from '@/icons/IconList.vue'
+import IconChecklist from '@/icons/IconChecklist.vue'
 import NavbarLink from './NavbarLink.vue'
 </script>
 
@@ -10,6 +11,11 @@ import NavbarLink from './NavbarLink.vue'
       <li>
         <NavbarLink :to="{ name: 'dashboard' }" title="Dashboard">
           <IconDashboard /> Dashboard
+        </NavbarLink>
+      </li>
+      <li>
+        <NavbarLink :to="{ name: 'list' }" title="Your List">
+          <IconChecklist /> Your List
         </NavbarLink>
       </li>
       <li>

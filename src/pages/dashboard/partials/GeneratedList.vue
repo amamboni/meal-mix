@@ -10,6 +10,6 @@ const generated = computed(() => mealStore.generated)
 
 <template>
   <div class="space-y-2">
-    <GeneratedItem v-for="(meal, index) in generated" :meal="meal" :key="index" />
+    <GeneratedItem v-for="meal in generated" :key="meal?.id" :meal="meal" />
   </div>
 </template>

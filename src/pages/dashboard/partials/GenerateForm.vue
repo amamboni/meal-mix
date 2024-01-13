@@ -29,7 +29,7 @@ const generate = () => {
       <FormInput id="count">
         <template #label>How many meals?</template>
         <template #default="{ id }">
-          <TextInput :id="id" type="number" v-model="count" autofocus></TextInput>
+          <TextInput :id="id" type="number" v-model="count"></TextInput>
         </template>
       </FormInput>
 

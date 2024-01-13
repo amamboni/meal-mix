@@ -24,12 +24,12 @@ const remove = (meal: Meal) => {
 
 <template>
   <MainLayout>
-    <div class="flex justify-between items-start">
+    <div class="flex justify-between items-start gap-2">
       <SectionTitle>
         <template #title> Your List </template>
         <template #description> Here are the meals you've added to the list </template>
       </SectionTitle>
-      <PrimaryButton @click="clear"> Clear List </PrimaryButton>
+      <PrimaryButton @click="clear" class="whitespace-nowrap"> Clear List </PrimaryButton>
     </div>
 
     <div class="flex-1 overflow-auto">

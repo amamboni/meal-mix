@@ -8,6 +8,7 @@ import NavbarLink from './NavbarLink.vue'
 <template>
   <nav>
     <ul class="grid grid-flow-col">
+    <ul class="grid grid-cols-3">
       <li>
         <NavbarLink :to="{ name: 'dashboard' }" title="Dashboard">
           <IconDashboard /> Dashboard

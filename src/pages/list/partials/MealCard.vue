@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SecondaryButton from '@/components/SecondaryButton.vue'
+import IconDelete from '@/icons/IconDelete.vue'
 import Meal from '@/types/Meal'
 
 interface Props {
@@ -30,5 +32,9 @@ defineEmits<{
         </template>
       </div>
     </div>
+
+    <SecondaryButton @click="$emit('remove')">
+      <IconDelete />
+    </SecondaryButton>
   </div>
 </template>

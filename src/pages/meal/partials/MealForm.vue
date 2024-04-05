@@ -4,8 +4,10 @@ import PrimaryButton from '@/components/PrimaryButton.vue'
 import TextInput from '@/components/TextInput.vue'
 import router from '@/router'
 import { useMealStore } from '@/store/meal'
+import { useToastStore } from '@/store/toast'
 import Meal from '@/types/Meal'
-import { cloneDeep } from 'lodash'
+import ToastStatus from '@/types/enums/ToastStatus'
+import { cloneDeep, isEmpty } from 'lodash'
 import { computed, reactive } from 'vue'
 import Ingredients from './Ingredients.vue'
 import Tags from './Tags.vue'
@@ -17,6 +19,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const mealStore = useMealStore()
+const toastStore = useToastStore()
 
 const meal = computed(() => cloneDeep(mealStore.meals.find((meal) => meal?.id === props?.id)))
 
@@ -28,18 +31,25 @@ const form = reactive<Meal>({
 })
 
 const submit = () => {
-  if (form.name) {
-    if (props?.id) {
-      const mealIndex = mealStore.meals.findIndex((meal) => meal?.id === props?.id)
-      if (mealIndex !== -1) {
-        mealStore.meals.splice(mealIndex, 1, form)
-      }
-    } else {
-      mealStore.meals.push(form)
-    }
-
-    router.push({ name: 'meals' })
+  if (isEmpty(form.name)) {
+    toastStore.addToast('Please fill up name', ToastStatus.Warning)
+    return
   }
+
+  if (props?.id) {
+    const mealIndex = mealStore.meals.findIndex((meal) => meal?.id === props?.id)
+    if (mealIndex !== -1) {
+      mealStore.meals.splice(mealIndex, 1, form)
+
+      toastStore.addToast('Successfully updated meal', ToastStatus.Success)
+    }
+  } else {
+    mealStore.meals.push(form)
+
+    toastStore.addToast('Successfully created meal', ToastStatus.Success)
+  }
+
+  router.push({ name: 'meals' })
 }
 </script>
 

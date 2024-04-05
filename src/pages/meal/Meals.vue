@@ -5,11 +5,14 @@ import TextInput from '@/components/TextInput.vue'
 import IconLogo from '@/icons/IconLogo.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useMealStore } from '@/store/meal'
+import { useToastStore } from '@/store/toast'
+import ToastStatus from '@/types/enums/ToastStatus'
 import Meal from '@/types/Meal'
 import { computed, ref } from 'vue'
 import MealCard from './partials/MealCard.vue'
 
 const mealStore = useMealStore()
+const toastStore = useToastStore()
 
 const search = ref('')
 const meals = computed(() => mealStore.meals)
@@ -23,6 +26,8 @@ const mealsFiltered = computed(() =>
 const remove = (meal: Meal) => {
   const index = mealStore.meals.findIndex((item) => item?.id === meal?.id)
   mealStore.meals.splice(index, 1)
+
+  toastStore.addToast('Successfully removed meal', ToastStatus.Success)
 }
 </script>
 

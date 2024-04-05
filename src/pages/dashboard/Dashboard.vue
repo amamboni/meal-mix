@@ -4,17 +4,22 @@ import SectionTitle from '@/components/SectionTitle.vue'
 import IconLogo from '@/icons/IconLogo.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useMealStore } from '@/store/meal'
+import { useToastStore } from '@/store/toast'
+import ToastStatus from '@/types/enums/ToastStatus'
 import { computed } from 'vue'
 import GenerateForm from './partials/GenerateForm.vue'
 import GeneratedList from './partials/GeneratedList.vue'
 
 const mealStore = useMealStore()
+const toastStore = useToastStore()
 
 const meals = computed(() => mealStore.meals)
 const generated = computed(() => mealStore.generated)
 
 const clear = () => {
   mealStore.generated = []
+
+  toastStore.addToast('Successfully cleared list', ToastStatus.Success)
 }
 </script>
 

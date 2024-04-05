@@ -4,21 +4,28 @@ import SectionTitle from '@/components/SectionTitle.vue'
 import IconLogo from '@/icons/IconLogo.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useMealStore } from '@/store/meal'
+import { useToastStore } from '@/store/toast'
+import ToastStatus from '@/types/enums/ToastStatus'
 import Meal from '@/types/Meal'
 import { computed } from 'vue'
 import MealCard from './partials/MealCard.vue'
 
 const mealStore = useMealStore()
+const toastStore = useToastStore()
 
 const list = computed(() => mealStore.list)
 
 const clear = () => {
   mealStore.list = []
+
+  toastStore.addToast('Successfully cleared list', ToastStatus.Success)
 }
 
 const remove = (meal: Meal) => {
   const index = mealStore.list.findIndex((item) => item?.id === meal?.id)
   mealStore.list.splice(index, 1)
+
+  toastStore.addToast('Successfully removed meal', ToastStatus.Success)
 }
 </script>
 

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import SecondaryButton from '@/components/SecondaryButton.vue'
 import { useMealStore } from '@/store/meal'
+import { useToastStore } from '@/store/toast'
+import ToastStatus from '@/types/enums/ToastStatus'
 import Meal from '@/types/Meal'
 import { computed } from 'vue'
 
@@ -11,11 +13,17 @@ interface Props {
 const props = defineProps<Props>()
 
 const mealStore = useMealStore()
+const toastStore = useToastStore()
+
 const list = computed(() => mealStore.list)
 
 const add = () => {
   if (!list.value.find((item) => item?.id === props.meal?.id)) {
     mealStore.list.push(props.meal)
+
+    toastStore.addToast('Successfully added to list', ToastStatus.Success)
+  } else {
+    toastStore.addToast('Meal already on the list', ToastStatus.Warning)
   }
 }
 </script>

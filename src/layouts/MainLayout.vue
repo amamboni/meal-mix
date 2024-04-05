@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Toast from '@/components/Toast/Toast.vue'
 import Navbar from './partials/Navbar.vue'
 </script>
 
@@ -8,5 +9,6 @@ import Navbar from './partials/Navbar.vue'
       <slot />
     </div>
     <Navbar />
+    <Toast />
   </div>
 </template>

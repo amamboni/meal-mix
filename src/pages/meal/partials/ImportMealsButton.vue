@@ -71,6 +71,6 @@ const importMeals = (event: Event) => {
 <template>
   <DropdownLabel>
     <input id="importMeals" type="file" @change="importMeals" class="hidden" />
-    <p>Import Meal</p>
+    <p>Import Meals</p>
   </DropdownLabel>
 </template>

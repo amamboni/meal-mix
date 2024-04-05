@@ -23,7 +23,7 @@ const isValidJSON = (string: string) => {
 
 const checkContents = (items: any[]) => {
   for (const item of items) {
-    if (!item?.id && !item?.name && !item?.ingredients && !item?.tags) {
+    if (!item?.name && !item?.ingredients && !item?.tags) {
       return false
     }
   }
@@ -34,7 +34,12 @@ const checkContents = (items: any[]) => {
 const addItems = (items: Meal[]) => {
   items?.forEach((item) => {
     if (!meals.value.find((meal) => meal?.name === item?.name)) {
-      mealStore.meals.push(item)
+      mealStore.meals.push({
+        id: new Date().getTime().toString(),
+        name: item?.name,
+        ingredients: item?.ingredients ?? [],
+        tags: item?.tags ?? [],
+      })
     }
   })
 }

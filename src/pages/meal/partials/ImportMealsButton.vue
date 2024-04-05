@@ -4,7 +4,7 @@ import { useMealStore } from '@/store/meal'
 import { useToastStore } from '@/store/toast'
 import ToastStatus from '@/types/enums/ToastStatus'
 import Meal from '@/types/Meal'
-import { uuid } from '@/utils'
+import { getUUID } from '@/utils'
 import { computed } from 'vue'
 
 const mealStore = useMealStore()
@@ -36,7 +36,7 @@ const addItems = (items: Meal[]) => {
   items?.forEach((item) => {
     if (!meals.value.find((meal) => meal?.name === item?.name)) {
       mealStore.meals.push({
-        id: uuid(),
+        id: getUUID(),
         name: item?.name,
         ingredients: item?.ingredients ?? [],
         tags: item?.tags ?? [],

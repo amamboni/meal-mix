@@ -7,7 +7,7 @@ import { useMealStore } from '@/store/meal'
 import { useToastStore } from '@/store/toast'
 import Meal from '@/types/Meal'
 import ToastStatus from '@/types/enums/ToastStatus'
-import { uuid } from '@/utils'
+import { getUUID } from '@/utils'
 import { cloneDeep, isEmpty } from 'lodash'
 import { computed, reactive } from 'vue'
 import Ingredients from './Ingredients.vue'
@@ -25,7 +25,7 @@ const toastStore = useToastStore()
 const meal = computed(() => cloneDeep(mealStore.meals.find((meal) => meal?.id === props?.id)))
 
 const form = reactive<Meal>({
-  id: props?.id ? meal.value?.id || '' : uuid(),
+  id: props?.id ? meal.value?.id || '' : getUUID(),
   name: props?.id ? meal.value?.name || '' : '',
   ingredients: props?.id ? meal.value?.ingredients || [] : [],
   tags: props?.id ? meal.value?.tags || [] : [],

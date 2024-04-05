@@ -27,7 +27,10 @@ const clear = () => {
 <template>
   <MainLayout>
     <SectionTitle>
-      <template #title> Welcome to MealMix! v{{ getVersion() }}</template>
+      <template #title>
+        Welcome to MealMix!
+        <span class="text-sm text-gray">v{{ getVersion() }}</span>
+      </template>
       <template #description>
         <span v-if="meals.length"> Generate your meals below </span>
         <span v-else> You don't have any meals yet. Please add some on the Meals page </span>

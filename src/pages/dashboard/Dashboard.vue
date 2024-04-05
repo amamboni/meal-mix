@@ -6,6 +6,7 @@ import MainLayout from '@/layouts/MainLayout.vue'
 import { useMealStore } from '@/store/meal'
 import { useToastStore } from '@/store/toast'
 import ToastStatus from '@/types/enums/ToastStatus'
+import { getVersion } from '@/utils'
 import { computed } from 'vue'
 import GenerateForm from './partials/GenerateForm.vue'
 import GeneratedList from './partials/GeneratedList.vue'
@@ -26,7 +27,7 @@ const clear = () => {
 <template>
   <MainLayout>
     <SectionTitle>
-      <template #title> Welcome to MealMix! </template>
+      <template #title> Welcome to MealMix! v{{ getVersion() }}</template>
       <template #description>
         <span v-if="meals.length"> Generate your meals below </span>
         <span v-else> You don't have any meals yet. Please add some on the Meals page </span>

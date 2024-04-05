@@ -15,3 +15,12 @@ import { chain, isNumber } from 'lodash'
 export const enumAsOptions = (obj: object): object => {
   return chain(obj).omitBy(isNumber).value()
 }
+
+/**
+ * Generate a random uuid using Crypto
+ */
+export const uuid = () => {
+  const crypto = new Crypto()
+
+  return crypto.randomUUID()
+}

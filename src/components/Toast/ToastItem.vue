@@ -47,7 +47,7 @@ onMounted(() => {
     <p class="font-normal">
       {{ toast?.message }}
     </p>
-    <SecondaryButton @click.prevent="dismiss">
+    <SecondaryButton class="!bg-transparent border-none" @click.prevent="dismiss">
       <IconClose />
     </SecondaryButton>
   </div>

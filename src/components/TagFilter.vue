@@ -5,6 +5,7 @@ import { computed } from 'vue'
 interface Props {
   modelValue: string[]
 }
+
 const props = defineProps<Props>()
 
 const emit = defineEmits<{

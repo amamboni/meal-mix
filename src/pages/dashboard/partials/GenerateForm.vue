@@ -3,11 +3,11 @@ import Dropdown from '@/components/Dropdown.vue'
 import DropdownButton from '@/components/DropdownButton.vue'
 import FormInput from '@/components/FormInput.vue'
 import PrimaryButton from '@/components/PrimaryButton.vue'
+import TagFilter from '@/components/TagFilter.vue'
 import TextInput from '@/components/TextInput.vue'
 import { useMealStore } from '@/store/meal'
 import { sampleSize } from 'lodash'
 import { computed, ref } from 'vue'
-import TagFilter from './TagFilter.vue'
 
 const mealStore = useMealStore()
 const meals = computed(() => mealStore.meals)

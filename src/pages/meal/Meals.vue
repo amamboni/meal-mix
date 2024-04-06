@@ -3,6 +3,7 @@ import Dropdown from '@/components/Dropdown.vue'
 import DropdownButton from '@/components/DropdownButton.vue'
 import LinkButton from '@/components/LinkButton.vue'
 import SectionTitle from '@/components/SectionTitle.vue'
+import TagFilter from '@/components/TagFilter.vue'
 import TextInput from '@/components/TextInput.vue'
 import IconLogo from '@/icons/IconLogo.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
@@ -19,12 +20,13 @@ const mealStore = useMealStore()
 const toastStore = useToastStore()
 
 const search = ref('')
+const tags = ref<string[]>([])
 const meals = computed(() => mealStore.meals)
 
 const mealsFiltered = computed(() =>
-  meals.value.filter((meal) =>
-    meal?.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())
-  )
+  meals.value
+    .filter((meal) => meal?.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()))
+    .filter((meal) => tags.value?.every((tag) => meal.tags?.includes(tag)))
 )
 
 const remove = (meal: Meal) => {
@@ -62,6 +64,17 @@ const remove = (meal: Meal) => {
     </div>
 
     <TextInput type="search" v-model="search" placeholder="Search" />
+
+    <Dropdown :close-on-click="false" full-width>
+      <template #trigger>
+        <DropdownButton>Filter by Tags</DropdownButton>
+      </template>
+      <template #content>
+        <div class="p-2 flex flex-col gap-2">
+          <TagFilter v-model="tags" />
+        </div>
+      </template>
+    </Dropdown>
 
     <div class="flex-1 overflow-auto">
       <div v-if="meals.length">

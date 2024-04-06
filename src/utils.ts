@@ -24,4 +24,4 @@ export const getUUID = () => crypto.randomUUID()
 /**
  * Get the current app version
  */
-export const getVersion = () => '1.0.0'
+export const getVersion = () => '1.0.1'

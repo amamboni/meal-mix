@@ -19,11 +19,7 @@ export const enumAsOptions = (obj: object): object => {
 /**
  * Generate a random uuid using Crypto
  */
-export const getUUID = () => {
-  const crypto = new Crypto()
-
-  return crypto.randomUUID()
-}
+export const getUUID = () => crypto.randomUUID()
 
 /**
  * Get the current app version

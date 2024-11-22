@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IconArrowLeft from '@/icons/IconArrowLeft.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
+import { ArrowLeft } from 'lucide-vue-next'
 import { useRoute } from 'vue-router'
 import MealForm from './partials/MealForm.vue'
 
@@ -12,7 +12,7 @@ const id = route.params?.id?.toString()
 <template>
   <MainLayout>
     <RouterLink :to="{ name: 'meals' }" class="w-fit">
-      <IconArrowLeft />
+      <Icon :icon="ArrowLeft" />
     </RouterLink>
 
     <MealForm :id="id" class="flex-1 overflow-auto p-1" />

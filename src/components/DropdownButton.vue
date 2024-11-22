@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IconChevronDown from '@/icons/IconChevronDown.vue'
-import IconChevronUp from '@/icons/IconChevronUp.vue'
+import { ChevronDown, ChevronUp } from 'lucide-vue-next'
+import Icon from './Icon.vue'
 import SecondaryButton from './SecondaryButton.vue'
 
 interface Props {
@@ -17,7 +17,6 @@ withDefaults(defineProps<Props>(), {
     <div class="grow truncate">
       <slot />
     </div>
-    <IconChevronUp v-if="active" class="text-gray shrink-0" />
-    <IconChevronDown v-else class="text-gray shrink-0" />
+    <Icon :icon="active ? ChevronUp : ChevronDown" class="text-gray shrink-0" />
   </SecondaryButton>
 </template>

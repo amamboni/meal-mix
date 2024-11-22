@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import Icon from '@/components/Icon.vue'
 import SecondaryButton from '@/components/SecondaryButton.vue'
-import IconDelete from '@/icons/IconDelete.vue'
 import Meal from '@/types/Meal'
+import { Trash2 } from 'lucide-vue-next'
 
 interface Props {
   meal: Meal
@@ -36,7 +37,7 @@ defineEmits<{
     </div>
 
     <SecondaryButton @click="$emit('remove')">
-      <IconDelete />
+      <Icon :icon="Trash2" />
     </SecondaryButton>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PrimaryButton from '@/components/PrimaryButton.vue'
 import SectionTitle from '@/components/SectionTitle.vue'
-import IconLogo from '@/icons/IconLogo.vue'
+import IconLogo from '@/components/IconLogo.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useMealStore } from '@/store/meal'
 import { useToastStore } from '@/store/toast'

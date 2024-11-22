@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import IconClose from '@/icons/IconClose.vue'
 import { useToastStore } from '@/store/toast'
 import Toast from '@/types/Toast'
 import ToastStatus from '@/types/enums/ToastStatus'
+import { X } from 'lucide-vue-next'
 import { computed, onMounted } from 'vue'
+import Icon from '../Icon.vue'
 import SecondaryButton from '../SecondaryButton.vue'
 
 interface Props {
@@ -48,7 +49,7 @@ onMounted(() => {
       {{ toast?.message }}
     </p>
     <SecondaryButton class="!bg-transparent border-none" @click.prevent="dismiss">
-      <IconClose />
+      <Icon :icon="X" />
     </SecondaryButton>
   </div>
 </template>

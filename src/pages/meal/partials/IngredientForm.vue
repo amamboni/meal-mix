@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import Icon from '@/components/Icon.vue'
 import SecondaryButton from '@/components/SecondaryButton.vue'
 import SelectInput from '@/components/SelectInput.vue'
 import TextInput from '@/components/TextInput.vue'
-import IconDelete from '@/icons/IconDelete.vue'
 import Ingredient from '@/types/Ingedient'
 import UnitOfMeasurement from '@/types/enums/UnitOfMeasurement'
 import { enumAsOptions } from '@/utils'
+import { Trash2 } from 'lucide-vue-next'
 import { reactive, watch } from 'vue'
 
 interface Props {
@@ -56,7 +57,7 @@ watch(
     <SelectInput v-model="form.unit" :options="units" class="w-full" />
     <TextInput type="text" v-model="form.name" placeholder="Name" class="w-full" />
     <SecondaryButton @click="emit('remove')">
-      <IconDelete />
+      <Icon :icon="Trash2" />
     </SecondaryButton>
   </form>
 </template>

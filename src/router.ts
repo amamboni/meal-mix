@@ -22,6 +22,11 @@ const routes = [
     component: () => import('./pages/meal/EditMeal.vue'),
   },
   {
+    path: '/quick',
+    name: 'quick',
+    component: () => import('./pages/quick/Quick.vue'),
+  },
+  {
     path: '/list',
     name: 'list',
     component: () => import('./pages/list/List.vue'),

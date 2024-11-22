@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import buttonClasses from '@/classes/button'
 import Icon from '@/components/Icon.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { ArrowLeft } from 'lucide-vue-next'
@@ -8,7 +7,7 @@ import MealForm from './partials/MealForm.vue'
 
 <template>
   <MainLayout>
-    <RouterLink :to="{ name: 'meals' }" class="w-fit" :class="buttonClasses.all()">
+    <RouterLink :to="{ name: 'meals' }" class="w-fit">
       <Icon :icon="ArrowLeft" />
     </RouterLink>
 
